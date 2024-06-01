@@ -22,6 +22,7 @@ li.innerHTML = todoInput.value
 //create edit or delete btn
 
 var editBtn = document.createElement("button")
+editBtn.setAttribute("onClick", "editTodo(this)")
 editBtn.innerHTML = "EDIT"
 
 var deleteBtn = document.createElement("button")
@@ -50,3 +51,25 @@ function delTodo(ele) {
 
     ele.parentNode.remove()
 }   
+
+function editTodo(ele){
+    // console.log("ele edit",
+    //     ele.previousSibling.nodeValue = "HELLO WORLD"
+    // )
+
+    var editVal = prompt("Enter value", ele.previousSibling.nodeValue)
+    console.log(editVal)
+    ele.previousSibling.nodeValue = editVal
+}
+
+let checkBox = document.createElement("todoInput");
+checkBox.type = "checkbox";
+todoInput.prepend(checkBox);
+
+checkBox.onchange = function () {
+  if (checkBox.checked) {
+    todoInput.style.textDecoration = "line-through";
+  } else {
+    todoInput.style.textDecoration = "none";
+  }
+};
